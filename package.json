@@ -1,0 +1,9 @@
+{
+  "name": "coderoute",
+  "private": true,
+  "description": "Multi-model coding assistant routed through the Otari gateway.",
+  "scripts": {
+    "start": "python3 -m uvicorn coderoute.app:app --host 0.0.0.0 --port ${PORT:-8000}",
+    "test": "python3 -m pytest -q"
+  }
+}
