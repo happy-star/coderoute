@@ -1,0 +1,211 @@
+:root {
+  color-scheme: light;
+  --paper: #f4efe6;
+  --ink: #1c1915;
+  --muted: #5c564c;
+  --line: #ddd4c6;
+  --teal: #0e6b62;
+  --teal-ink: #f4fffd;
+  --card: #fffdf8;
+  --mock: #8a4b08;
+  --mock-bg: #f6e2c4;
+  --err: #8d2b2b;
+  --shadow: 0 1px 0 rgba(28, 25, 21, 0.04);
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 400px at 10% -10%, #efe4cf, transparent 60%),
+    var(--paper);
+  color: var(--ink);
+}
+
+a { color: var(--teal); }
+
+code, pre, input, textarea, button, .meta, .hint, .eyebrow, .banner, .mock-flag {
+  font-family: "IBM Plex Mono", "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.top, main {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2rem 0 1rem;
+  align-items: flex-end;
+}
+
+.eyebrow, .hint, .meta {
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  line-height: 0.95;
+  margin: 0.2rem 0;
+  font-weight: 600;
+}
+
+.lede { max-width: 40rem; margin: 0; font-size: 1.05rem; }
+
+.toplinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1rem;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.85rem;
+}
+
+.banner, .mock-flag {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto 1rem;
+  background: var(--mock-bg);
+  color: var(--mock);
+  padding: 0.7rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.banner { margin-top: 0.4rem; }
+
+main { display: grid; gap: 1.25rem; padding-bottom: 3rem; }
+
+.composer, article, .route {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.composer { padding: 1rem 1rem 1.1rem; }
+
+label { display: block; font-size: 0.92rem; margin-bottom: 0.35rem; }
+
+textarea, input {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 8px;
+  padding: 0.7rem 0.75rem;
+  font-size: 0.92rem;
+}
+
+textarea { resize: vertical; min-height: 8rem; }
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.9rem;
+}
+
+button {
+  background: var(--teal);
+  color: var(--teal-ink);
+  border: 0;
+  border-radius: 999px;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+button:disabled { opacity: 0.6; cursor: progress; }
+
+.mock-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+}
+
+.mock-toggle input { width: auto; }
+
+.hint { margin: 0.6rem 0 0; }
+
+.route {
+  margin: 0.9rem 0 0;
+  padding: 0.8rem 1rem 0.8rem 2rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.route li + li { margin-top: 0.35rem; }
+
+.result { display: grid; gap: 0.9rem; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 0.9rem;
+}
+
+article { padding: 0.9rem 1rem 1rem; }
+
+h2 {
+  margin: 0 0 0.55rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+pre.code {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #1c1915;
+  color: #f4efe6;
+  border-radius: 10px;
+  padding: 0.85rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.stderr { margin-top: 0.5rem; background: #3a2424; }
+
+.error { color: var(--err); font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.82rem; }
+
+.usage-table, .budget-list { display: grid; gap: 0.45rem; }
+
+.row {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  border-top: 1px solid var(--line);
+  padding-top: 0.4rem;
+}
+
+.row strong { font-weight: 600; }
+
+.links { display: flex; flex-wrap: wrap; gap: 0.8rem; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.82rem; }
+
+.call {
+  border-top: 1px solid var(--line);
+  padding-top: 0.55rem;
+  margin-top: 0.55rem;
+  font-size: 0.86rem;
+}
+
+@media (max-width: 800px) {
+  .top, .fields, .grid { display: block; }
+  .toplinks { margin-top: 1rem; }
+  .fields > div + div, .grid article + article { margin-top: 0.8rem; }
+}

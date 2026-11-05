@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CodeRoute</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <p class="eyebrow">Mozilla Otari · Developers Wilding</p>
+        <h1>CodeRoute</h1>
+        <p class="lede">
+          A multi-model coding assistant routed through Otari. A natural-language task becomes
+          runnable Python, checked by a second model and run in Otari's sandbox.
+        </p>
+      </div>
+      <nav class="toplinks" aria-label="Otari">
+        <a id="link-otari" href="https://otari.ai">otari.ai</a>
+        <a id="link-github" href="https://github.com/mozilla-ai/otari">mozilla-ai/otari</a>
+        <a id="link-activity" href="https://otari.ai/dashboard/requests">Activity</a>
+        <a id="link-budgets" href="https://otari.ai/dashboard/budgets">Budgets</a>
+      </nav>
+    </header>
+
+    <p id="mode-banner" class="banner" hidden></p>
+
+    <main>
+      <section class="composer">
+        <form id="form">
+          <label for="task">Task</label>
+          <textarea
+            id="task"
+            name="task"
+            rows="7"
+            required
+            placeholder="Print the first 10 Fibonacci numbers."
+          ></textarea>
+          <div class="fields">
+            <div>
+              <label for="coder-model">Coder model</label>
+              <input id="coder-model" name="coder_model" list="model-list" autocomplete="off" />
+            </div>
+            <div>
+              <label for="review-model">Review model</label>
+              <input id="review-model" name="review_model" list="model-list" autocomplete="off" />
+            </div>
+          </div>
+          <datalist id="model-list"></datalist>
+          <p class="hint" id="model-hint"></p>
+          <div class="actions">
+            <button id="generate" type="submit">Generate</button>
+            <label class="mock-toggle" id="mock-wrap">
+              <input id="mock" type="checkbox" />
+              Mock mode
+            </label>
+          </div>
+        </form>
+        <ol class="route" aria-label="Route">
+          <li>Coder model writes Python and may run it with Otari code execution.</li>
+          <li>A second model reviews or rewrites the program.</li>
+          <li>Otari runs the final program at <code>POST /api/v1/code/execute</code>.</li>
+        </ol>
+      </section>
+
+      <section id="result" class="result" aria-live="polite" hidden>
+        <div id="mock-flag" class="mock-flag" hidden>Mock mode — Otari was not called</div>
+        <div class="grid">
+          <article>
+            <h2>Program</h2>
+            <pre id="code" class="code"></pre>
+          </article>
+          <article>
+            <h2>Execution</h2>
+            <p id="exec-meta" class="meta"></p>
+            <pre id="stdout" class="code"></pre>
+            <pre id="stderr" class="code stderr" hidden></pre>
+            <p id="exec-error" class="error" hidden></p>
+          </article>
+        </div>
+        <article>
+          <h2>Review</h2>
+          <p id="review"></p>
+        </article>
+        <article>
+          <h2>Tool runs during generation</h2>
+          <div id="tools"></div>
+        </article>
+        <article>
+          <h2>Models and usage</h2>
+          <div id="usage"></div>
+          <p class="links" id="pass-links"></p>
+        </article>
+        <article>
+          <h2>Budgets</h2>
+          <div id="budgets"></div>
+        </article>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
